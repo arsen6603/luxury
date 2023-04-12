@@ -1,0 +1,72 @@
+@media (max-width: 1157px) {
+  .Section__Title {
+    font-size: 24px;
+  }
+
+  .Main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Main__Left {
+    img {
+      width: 400px;
+    }
+  }
+
+  .Main__Text {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .Course__Text {
+    flex-direction: column;
+  }
+
+  .Course__Text_Item {
+    margin-bottom: 20px;
+  }
+
+  .Reviews__Items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      margin: 0 0 10px 0 !important;
+    }
+  }
+
+  .Price {
+    margin-top: 60px;
+  }
+
+
+.Contacts {
+    display: flex;
+    justify-content: center;
+}
+}
+
+
+@media (max-width: 500px) {
+    .Main__Left {
+        img {
+            width: 300px;
+        }
+    }
+
+    .Price__Box_Item {
+        p {
+            font-size: 17px;
+        }
+    }
+
+    .Course__Text_Item {
+        flex-direction: column;
+        align-items: center !important;
+        img {
+            margin-bottom: 20px;
+        }
+    }
+}
