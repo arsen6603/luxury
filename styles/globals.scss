@@ -158,6 +158,24 @@ body {
       }
     }
   }
+
+  hr {
+    margin: 20px;
+    border:1px solid #ffd700;
+    border-radius: 50px;
+  }
+
+  .Image {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      color: #fff;
+      margin-top: 20px;
+    }
+  }
 }
 
 .Price {
