@@ -68,12 +68,6 @@ body {
   }
 }
 
-.box {
-  width: 100px;
-  height: 600px;
-  background-color: #ffffff;
-}
-
 .Main {
   display: flex;
   justify-content: space-between;
@@ -174,6 +168,10 @@ body {
     p {
       color: #fff;
       margin-top: 20px;
+    }
+
+    img {
+      border: 2px solid #ffd700;
     }
   }
 }

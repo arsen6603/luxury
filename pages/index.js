@@ -24,7 +24,7 @@ export default function Home() {
         </div>
         <section className="Main">
           <div className="Main__Left">
-            <img src="/images/main.jpeg" alt="" width={500} />
+            <img src="/images/img2.jpg" alt="" width={500} />
           </div>
           <div className="Main__Right">
             <h1
@@ -143,7 +143,7 @@ export default function Home() {
           </div>
           <hr />
           <div className="Image">
-            <img src="/images/img.jpg" alt=""  width={700}/>
+            <img src="/images/img.jpg" alt="" width={700} />
             <p>
               Здесь происходит полная трансформация для женщины. Как влюбить,
               как подсадить, как получать от них цветы, подари и помощь. Как
@@ -196,22 +196,20 @@ export default function Home() {
             </div>
 
             <div className="Price__Box_Cost">119 $</div>
-            <button>Приобрести</button>
+            <button>Купить курс</button>
           </div>
         </section>
         <section className="Contacts">
           <p>
-            У вас есть вопросы или нужна помощь в выборе курса? Напишите мне в{" "}
+            У вас есть вопросы или нужна помощь в выборе курса? Напишите нам в{" "}
             <a
               href="https://www.instagram.com/luxury_lady____/?igshid=YmMyMTA2M2Y%3D"
               target="_blank"
             >
               Instagram
             </a>{" "}
-            и я с удовольствием вам помогу! Кроме того, на моей странице вы
-            найдете много полезных советов и гайдов по теме притягивания мужчин
-            и получения подарков. Подписывайтесь и не пропустите ничего
-            интересного!
+            и мы с удовольствием поможем Вам, вместе с нашими кураторами от
+            Luxury Lady
           </p>
         </section>
       </div>
