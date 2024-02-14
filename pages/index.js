@@ -1,12 +1,108 @@
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function Home() {
+  const [sdkLoaded, setSdkLoaded] = useState(false);
+
   useEffect(() => {
     AOS.init();
+    if (typeof window !== "undefined") {
+      const script = document.createElement("script");
+      script.src = "https://static.paybox.money/sdk/stable/js-sdk-1.0.0.js";
+      script.async = true;
+      document.body.appendChild(script);
+
+      script.onload = () => {
+        FreedomPaySDK?.setup(
+          "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0RHlI8edvBblxPpPehmdolwkZN8bLsV2ATOxULUKENpGICs1QjOmeOffpGrEIWZDQcxndBBz9o81dCIeIR266tX5YG0z1ZHIoMxy7l4vYp46LCPWouHEKgtyr7Vo1IOPSKRFtJtCkJZvPaZPconz0D+ybhrPtg9bszdd6UTITi8mb7aZ2NWIrT6rfy0Kzxg6aoENFnQJ14tWFSRHqlAdwZLI7rZNRuYN4j6GJksFE2ThM60wanC5WUaXK65lAcad1q2zH6cLzt6JABW6LnG3S1DmN+A4XWuRpJ4U5DzxdznRn/QUJMJJ14u/opBr8Nh5vGAzs8W0Viv3uijUHpauZQIDAQAB",
+          "eUHbOShNZGlQ2iYuJmda2moPqDJTsdjD"
+        );
+        setSdkLoaded(true);
+      };
+    }
   }, []);
+
+  const pay = async () => {
+    if (sdkLoaded) {
+      const JSPaymentOptions = {
+        order_id: "6", // должен быть уникальным на каждый запрос
+        auto_clearing: 0,
+        amount: 20,
+        currency: "USD",
+        description: "Описание заказа",
+        test: 1,
+        options: {
+          user: {
+            email: "arsen.janybekov03@gmail.com",
+            phone: "+996707219020",
+          },
+        },
+      };
+
+      const JSTransactionOptionsBankCard = {
+        type: "bank_card",
+        options: {
+          card_number: "4508034508034509",
+          card_holder_name: "test",
+          card_exp_month: "12",
+          card_exp_year: "26",
+        },
+      };
+
+      const JSTokenResponse = await FreedomPaySDK.tokenize(
+        JSTransactionOptionsBankCard
+      );
+
+      const JSTransactionOptionsBankCardToken = {
+        type: "tokenized_card",
+        options: {
+          token: JSTokenResponse.token,
+          card_cvv: "000",
+        },
+      };
+
+      try {
+        let JSPayResult = await FreedomPaySDK.charge(
+          JSPaymentOptions,
+          JSTransactionOptionsBankCardToken
+        );
+
+        if (JSPayResult.payment_status === "need_confirm") {
+          showPopup("3dsFormWrapper");
+          console.log("YYYES");
+          JSPayResult = await FreedomPaySDK.confirmInIframe(
+            JSPayResult,
+            "3dsForm"
+          );
+        }
+
+        // открыть страницу результата платежа и т д
+        // ...
+        console.log(JSPayResult);
+      } catch (JSErrorObject) {
+        // Обработать JSErrorObject.response
+        console.log(JSErrorObject.response, "what");
+      }
+    }
+  };
+
+  function showPopup(id) {
+    // открытие всплывающего окна
+  }
+
+  function setLoading(status) {
+    // триггер для загрузки, перекрытие формы, блокировка кнопок
+  }
+
+  function showError(error) {
+    // показываем ошибку
+  }
+
+  function validateMyForm() {
+    // валидация данных введенных пользователем, к примеру данные карты
+  }
 
   return (
     <>
@@ -114,33 +210,6 @@ export default function Home() {
           </div>
         </section>
         <section className="Reviews" id="reviews">
-          <h2 className="Section__Title">Отзывы</h2>
-          <div className="Reviews__Items">
-            <img
-              data-aos="fade-right"
-              src="/images/rev1.jpg"
-              alt=""
-              width={270}
-            />
-            <img
-              data-aos="fade-left"
-              src="/images/rev2.jpg"
-              alt=""
-              width={270}
-            />
-            <img
-              data-aos="fade-right"
-              src="/images/rev3.jpg"
-              alt=""
-              width={270}
-            />
-            <img
-              data-aos="fade-left"
-              src="/images/rev5.jpg"
-              alt=""
-              width={270}
-            />
-          </div>
           <hr />
           <div className="Image">
             <img src="/images/img.jpg" alt="" width={700} />
@@ -196,8 +265,9 @@ export default function Home() {
             </div>
 
             <div className="Price__Box_Cost">119 $</div>
-            <button>Купить курс</button>
+            <button onClick={pay}>Купить курс</button>
           </div>
+          <div id="3dsForm" style={{ width: 300, height: 300 }}></div>
         </section>
         <section className="Contacts">
           <p>
