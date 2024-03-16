@@ -155,7 +155,7 @@ body {
 
   hr {
     margin: 20px;
-    border:1px solid #ffd700;
+    border: 1px solid #ffd700;
     border-radius: 50px;
   }
 
@@ -175,6 +175,24 @@ body {
     }
   }
 }
+
+.Topics {
+  margin-top: 100px;
+
+  .Topics__Item {
+    margin-bottom: 25px;
+
+    p {
+      color: #fff;
+    }
+  }
+
+  hr {
+    margin: 10px;
+    border:1px solid #ffd700;
+  }
+}
+
 
 .Price {
   display: flex;
@@ -236,33 +254,21 @@ body {
   }
 
   a {
-  color: #fff;
-  animation: blur 2s ease infinite;
-  text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
+    color: #fff;
+    animation: blur 2s ease infinite;
+    text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
   }
 
   @keyframes blur {
     from {
-      text-shadow:0px 0px 10px #ffffffee,
-        0px 0px 3px #fff, 
-        0px 0px 1px #fff,
-        0px 0px 1px #fff,
-        0px 0px 1px #fff,
-        0px 0px 1px #fff,
-        0px 0px 1px #fff,
-        0px 0px 1px #fff,
-        0px 0px 5px #fff,
-        0px 0px 5px #fff,
-        0px 0px 5px #7B96B8,
-        0px 0px 10px #7B96B8,
-        0px 5px 10px #7B96B8,
-        0px 5px 10px #7B96B8,
-        0px 5px 10px #7B96B8,
-        0px 5px 10px #7B96B8,
-        0px -10px 10px #7b96b884,
-        0px -10px 10px #7b96b8b7;
+      text-shadow: 0px 0px 10px #ffffffee, 0px 0px 3px #fff, 0px 0px 1px #fff,
+        0px 0px 1px #fff, 0px 0px 1px #fff, 0px 0px 1px #fff, 0px 0px 1px #fff,
+        0px 0px 1px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff,
+        0px 0px 5px #7b96b8, 0px 0px 10px #7b96b8, 0px 5px 10px #7b96b8,
+        0px 5px 10px #7b96b8, 0px 5px 10px #7b96b8, 0px 5px 10px #7b96b8,
+        0px -10px 10px #7b96b884, 0px -10px 10px #7b96b8b7;
     }
   }
 }
 
-@import './media.scss';
+@import "./media.scss";
