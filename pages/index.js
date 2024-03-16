@@ -344,7 +344,7 @@ export default function Home() {
             </div>
 
             <div className="Price__Box_Cost">119 $</div>
-            <button onClick={pay}>Купить курс</button>
+            <button>Купить курс</button>
           </div>
           <div id="3dsForm" style={{ width: 300, height: 300 }}></div>
         </section>
