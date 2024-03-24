@@ -115,7 +115,7 @@ export default function Home() {
       <div className="Container">
         <div className="Header">
           <a href="#course">О курсе</a>
-          <a href="#reviews">Отзывы</a>
+          <a href="#topics">Темы гайда</a>
           <a href="#price">Стоимость</a>
         </div>
         <section className="Main">
@@ -234,7 +234,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section className="Topics">
+        <section className="Topics" id='topics'>
           <h2 className="Section__Title">Темы гайда</h2>
           <div className="Topics__Item">
             <p>
@@ -314,7 +314,6 @@ export default function Home() {
             </p>
             <hr />
           </div>
-
           <div className="Topics__Item">
             <b>Личные границы</b>
             <p>
